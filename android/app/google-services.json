@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "128982023460",
+    "project_id": "santo-rosario-eea7b",
+    "storage_bucket": "santo-rosario-eea7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128982023460:android:f31e5a5f9c4bb15cc207b1",
+        "android_client_info": {
+          "package_name": "com.damode.apps.santo_rosario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128982023460-a77ltao6s1meq3tth87fre1779d4a64a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-bvtMjeLTi1jeUfMP3SLHTQmuWuV_978"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128982023460-a77ltao6s1meq3tth87fre1779d4a64a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
