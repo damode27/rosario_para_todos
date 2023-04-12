@@ -10,7 +10,6 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
-//import 'package:url_launcher/url_launcher.dart';
 import 'rosario_a/Aa.dart';
 import 'rosario_a/Aa1.dart';
 import 'rosario_a/Aa2.dart';
@@ -212,16 +211,12 @@ class _InicioState extends State<Inicio> {
     obtenerContadorOnline();
   }
 
-  //funcion obtener contador online
-
-  //String _myUrlPaypal = "https://www.paypal.com/donate/?hosted_button_id=X4W9LFWYWUGW6";
   int _myContadorOnline;
   int _myAccentColor = 0xff000000;
   int _myPrimaryColor = 0xff000000;
   double _mySizeFont = 16.0;
   String _myMisterio = " ";
   int _myContadorLocal = 0;
-  //String _myNumCuenta = "012 180 01530167255 1";
   String _myCorreo = "damode.rosario@gmail.com";
   String _versionApp = "1.0.4";
 
@@ -241,11 +236,8 @@ class _InicioState extends State<Inicio> {
     guardarMisterioPreferencias(dia);
 
     return Scaffold(
-        //backgroundColor: Color(0x4411232D),
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          //automaticallyImplyLeading: false,
-          //backgroundColor: Colors.transparent, // status bar color
           brightness: Brightness.dark,
           title: const Text('Rosario para todos'),
           backgroundColor: Color(0x44000000),// status bar brightness
@@ -266,9 +258,8 @@ class _InicioState extends State<Inicio> {
             children: [
               Align(
                   alignment: Alignment.bottomCenter,
-                  child: Container( //color: Colors.red,
+                  child: Container(
                       height: 300.0,
-                      //margin: EdgeInsets.only(bottom: 75.0),
                       child: Column(
                         children: [
                           Text('Misterios ' + _myMisterio, textAlign: TextAlign.center,
@@ -279,7 +270,6 @@ class _InicioState extends State<Inicio> {
 
                           ElevatedButton(
                             child: const Text('COMENZAR ROSARIO', style: TextStyle(fontSize: 18.0,)),
-                            //style: ElevatedButton.styleFrom(primary: Theme.of(context).accentColor, minimumSize: Size(210, 40),),
                             style: ElevatedButton.styleFrom(primary: Color(_myAccentColor), minimumSize: Size(240, 40),),
                             onPressed: () {
                               HapticFeedback.lightImpact();
@@ -301,9 +291,6 @@ class _InicioState extends State<Inicio> {
                                   //print('connected');
                                   obtenerContadorOnline();
 
-                                  //await Future.delayed(Duration(seconds: 3));
-                                  //Widget _dialogContent = Text(_myContadorOnline.toString() + ' Rosarios', style: TextStyle(color: Color(_myPrimaryColor), fontSize: _mySizeFont, fontWeight: FontWeight.bold));
-
                                   if (_myContadorOnline == null)
                                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error en algunos datos, intente de nuevo")));
 
@@ -313,7 +300,6 @@ class _InicioState extends State<Inicio> {
                                         return CupertinoAlertDialog(
                                           content: Column(
                                             children: [
-                                              //_myContadorOnline == null ? CircularProgressIndicator() : _dialogContent,
                                               Text(_myContadorOnline.toString() + ' Rosarios', style: TextStyle(color: Color(_myPrimaryColor), fontSize: _mySizeFont, fontWeight: FontWeight.bold)),
                                               Text('Realizados por ti y la Comunidad que utiliza esta App alrededor del mundo.', style: TextStyle(fontSize: _mySizeFont,)),
                                               Icon(Icons.language),
@@ -347,9 +333,7 @@ class _InicioState extends State<Inicio> {
 
                                         content: Column(
                                           children: [
-                                            //Text(_myContadorOnline.toString() +' Rosarios', style: TextStyle(color: Color(_myPrimaryColor), fontSize: _mySizeFont, fontWeight: FontWeight.bold)),
                                             Text('No es posible leer los rosarios realizados por la comunidad.\nRevise su conexion a Internet e intente de nuevo.', style: TextStyle(fontSize: _mySizeFont-2,)),
-                                            //Icon(Icons.language),
                                             Text('\n' + _myContadorLocal.toString() + ' Rosarios', style: TextStyle(color: Color(_myPrimaryColor), fontSize: _mySizeFont, fontWeight: FontWeight.bold)),
                                             Text('Realizados en este dispositivo.', style: TextStyle(fontSize: _mySizeFont,)),
                                             Icon(Icons.phone_iphone),
@@ -537,48 +521,6 @@ class _InicioState extends State<Inicio> {
                                           Text('Acerca de los Desarrolladores', style: TextStyle(color: Color(_myPrimaryColor), fontSize: _mySizeFont, fontWeight: FontWeight.bold)),
                                           Text('Somos dos jóvenes laicos de la Arquidiócesis de San Luis Potosí, México. La inspiración para crear esta App es aumentar nuestra devoción por el Santo Rosario y propiciar que más personas lo recen.\n', style: TextStyle(fontSize: _mySizeFont-2,), textAlign: TextAlign.justify),
 
-                                          /*
-                                          Text('Donaciones', style: TextStyle(color: Color(_myPrimaryColor), fontSize: _mySizeFont, fontWeight: FontWeight.bold)),
-                                          Text('Esta App es completamente gratuita y libre de publicidad, si te gusta "Rosario para todos" y está en tus posibilidades, ayúdanos a actualizar y mejorar este proyecto, agregando más idiomas y una versión para iOS.', style: TextStyle(fontSize: _mySizeFont-2), textAlign: TextAlign.justify),
-                                          Text('Puedes donar mediante transferencia bancaria (Solo en México).', style: TextStyle(fontSize: _mySizeFont-2), textAlign: TextAlign.justify),
-
-                                          Center(
-                                            child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(primary: Color(_myAccentColor), minimumSize: Size(220, 35),),
-                                              onPressed: () {
-                                                HapticFeedback.mediumImpact();
-                                                Clipboard.setData(new ClipboardData(text: _myNumCuenta));
-                                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                                    content: Text(_myNumCuenta + " copiado")
-                                                ));
-                                              },
-                                              child: Text('Copiar CLABE Interbancaria', style: TextStyle(fontSize: 14.0,)),
-                                            ),
-                                          ),
-
-                                          Text('Contáctanos si deseas donar desde otro país. De ante mano; muchas gracias por tu apoyo.', style: TextStyle(fontSize: _mySizeFont-2), textAlign: TextAlign.justify),
-
-
-
-
-                                          Text('\nDonar mediante PayPal', style: TextStyle(fontSize: _mySizeFont-2)),
-
-                                          Center(
-                                            child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(primary: Color(_myAccentColor), minimumSize: Size(220, 35),),
-                                              onPressed: () {
-                                                HapticFeedback.mediumImpact();
-                                                launch(_myUrlPaypal);
-                                              },
-                                              child: Text('Abrir PayPal', style: TextStyle(fontSize: 14.0)),
-                                            ),
-                                          ),
-                                          */
-
-
-
-
-
                                           Text('Contacto', style: TextStyle(color: Color(_myPrimaryColor), fontSize: _mySizeFont, fontWeight: FontWeight.bold)),
                                           Text('"Rosario para todos" es completamente gratuita y libre de publicidad, si te agrada nuestro trabajo, puedes ayudarnos dando sugerencias o donando, para mantener y mejorar este proyecto. Contáctanos mediante este correo:\n', style: TextStyle(fontSize: _mySizeFont-2), textAlign: TextAlign.justify),
                                           Text(_myCorreo, style: TextStyle(fontSize: _mySizeFont-2)),
@@ -637,7 +579,6 @@ class _InicioState extends State<Inicio> {
       _myAccentColor = preferences.get('accentColorApp') ?? 0xff1976d2;
       _myPrimaryColor = preferences.get('primaryColorApp') ?? 0xff004ba0;
       _mySizeFont = preferences.get('sizeFontApp') ?? 16.0;
-      //_myMisterio = preferences.get('misterioApp') ?? "Gozosos";
       _myContadorLocal = preferences.get('contadorLocalApp') ?? 0;
     });
   }
@@ -674,9 +615,7 @@ class _InicioState extends State<Inicio> {
     FirebaseFirestore.instance.collection("rosarios");
 
     QuerySnapshot contadorOnline = await collectionReference.get();
-    //if (contadorOnline.docs.length != 0)
     _myContadorOnline = contadorOnline.docs.length;
-    //return contadorOnline.docs.length;
   }
 
 }
